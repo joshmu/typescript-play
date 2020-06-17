@@ -1,0 +1,24 @@
+{
+  "name": "typescript-play",
+  "version": "1.0.0",
+  "description": "Messing around with Typescript...",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshmu/typescript-play.git"
+  },
+  "keywords": [],
+  "author": "Josh Mu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshmu/typescript-play/issues"
+  },
+  "homepage": "https://github.com/joshmu/typescript-play#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
