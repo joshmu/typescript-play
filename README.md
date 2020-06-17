@@ -1,0 +1,3 @@
+# Typescript - Play
+
+Messing around with Typescript...
