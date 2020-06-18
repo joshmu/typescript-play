@@ -1,4 +1,4 @@
-function add(n1: number, n2: number, showResult: boolean, phrase: string) {
+function adder(n1: number, n2: number, showResult: boolean, phrase: string) {
   // this validation check would be ok if we could only check at runtime, otherwise we could rely on typescript
   // if (typeof n1 !== 'number' && typeof n2 !== 'number') {
   //   throw new Error('Incorrect input!')
@@ -15,9 +15,9 @@ let number1: number
 number1 = 5
 // const number1 = 5 // 5.0
 const number2 = 2.8
-const printResult = true
+const printIt = true
 const resultPhrase = 'Result is: '
 
-const result = add(number1, number2, printResult, resultPhrase)
+const result = adder(number1, number2, printIt, resultPhrase)
 
 console.log(result)
