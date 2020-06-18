@@ -1,22 +1,18 @@
-function add(n1: number, n2: number) {
-  return n1 + n2
+// UNKNOWN
+let userInput: unknown
+let userName: string
+
+userInput = 5
+userInput = 'Josh'
+// we need to use additional type check if we want to reassign unknown type to a fixed type variable
+if (typeof userInput === 'string') {
+  userName = userInput
 }
 
-function printResult(num: number) {
-  console.log('Result: ' + num)
+console.log(userName)
+
+// NEVER
+function generateError(message: string, errorCode: number): never {
+  throw { message, errorCode }
 }
-
-function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
-  const result = n1 + n2
-  cb(result)
-}
-
-printResult(add(5, 12))
-
-let combineValues: (a: number, b: number) => number
-
-combineValues = add
-
-console.log(combineValues(8, 8))
-
-addAndHandle(10, 20, (result) => console.log(result))
+generateError('An error occurred!', 500)
