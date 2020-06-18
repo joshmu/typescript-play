@@ -1,44 +1,28 @@
-// * we could explicitly specify the object however it is better to use typescript inference
-// const person: {
-//   name: string
-//   age: number
-// } = {
-// const person: {
-//   name: string
-//   age: number
-//   hobbies: string[]
-//   role: [number, string]
-// } = {
-//   name: 'Josh',
-//   age: 34,
-//   hobbies: ['Sports', 'Cooking'],
-//   role: [2, 'author'], // array has to have exactly 2 elements
-// }
+type Combinable = number | string
+type ConversionDescriptor = 'as-number' | 'as-string'
 
-enum Role {
-  ADMIN,
-  READ_ONLY,
-  AUTHOR,
+function combine(
+  input1: Combinable,
+  input2: Combinable,
+  resultCoversion: ConversionDescriptor
+) {
+  let result: number | string
+  if (
+    (typeof input1 === 'number' && typeof input2 === 'number') ||
+    resultCoversion === 'as-number'
+  ) {
+    result = +input1 + +input2
+  } else {
+    result = input1.toString() + input2.toString()
+  }
+  return result
 }
 
-const person = {
-  name: 'Josh',
-  age: 30,
-  hobbies: ['Sports', 'Cooking'],
-  role: Role.ADMIN,
-}
+const combinedAges = combine(30, 26, 'as-number')
+console.log(combinedAges)
 
-// these could work if not using a 'Tuple'
-// person.role.push('admin')
-// person.role[1] = 10
+const combinedStringAges = combine('30', '26', 'as-number')
+console.log(combinedStringAges)
 
-let favouriteActivities: string[]
-favouriteActivities = ['Sports']
-
-console.log(person.name)
-
-for (const hobby of person.hobbies) {
-  console.log(hobby.toUpperCase())
-}
-
-if (person.role === Role.ADMIN) console.log('is admin')
+const combinedNames = combine('Josh', 'Bob', 'as-string')
+console.log(combinedNames)
