@@ -1,28 +1,22 @@
-type Combinable = number | string
-type ConversionDescriptor = 'as-number' | 'as-string'
-
-function combine(
-  input1: Combinable,
-  input2: Combinable,
-  resultCoversion: ConversionDescriptor
-) {
-  let result: number | string
-  if (
-    (typeof input1 === 'number' && typeof input2 === 'number') ||
-    resultCoversion === 'as-number'
-  ) {
-    result = +input1 + +input2
-  } else {
-    result = input1.toString() + input2.toString()
-  }
-  return result
+function add(n1: number, n2: number) {
+  return n1 + n2
 }
 
-const combinedAges = combine(30, 26, 'as-number')
-console.log(combinedAges)
+function printResult(num: number) {
+  console.log('Result: ' + num)
+}
 
-const combinedStringAges = combine('30', '26', 'as-number')
-console.log(combinedStringAges)
+function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
+  const result = n1 + n2
+  cb(result)
+}
 
-const combinedNames = combine('Josh', 'Bob', 'as-string')
-console.log(combinedNames)
+printResult(add(5, 12))
+
+let combineValues: (a: number, b: number) => number
+
+combineValues = add
+
+console.log(combineValues(8, 8))
+
+addAndHandle(10, 20, (result) => console.log(result))
