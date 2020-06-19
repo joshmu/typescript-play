@@ -1,6 +1,21 @@
-interface Greetable {
-  readonly name: string
+// type vs interface functions
+// type function
+// type AddFn = (a: number, b: number) => number
+// interface function
+interface AddFn {
+  (a: number, b: number): number
+}
+let add: AddFn
+add = (n1: number, n2: number) => {
+  return n1 + n2
+}
 
+// interfaces
+interface Named {
+  readonly name: string
+}
+
+interface Greetable extends Named {
   greet(phrase: string): void
 }
 
