@@ -1,19 +1,25 @@
 interface Greetable {
-  name: string
+  readonly name: string
 
   greet(phrase: string): void
 }
 
 interface Age {
-  age: number
+  readonly age: number
 }
 
 class Person implements Greetable, Age {
+  age: number
+  name: string
+
   get getAge() {
     return this.age
   }
 
-  constructor(public readonly name: string, public readonly age: number) {}
+  constructor(n: string, yearsOld: number) {
+    this.age = yearsOld
+    this.name = n
+  }
 
   greet(phrase: string) {
     console.log(`${this.name}: ${phrase}`)
