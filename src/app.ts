@@ -22,6 +22,25 @@ class Department {
   }
 }
 
+class ITDepartment extends Department {
+  constructor(id: string, public admins: string[]) {
+    super(id, 'IT')
+    this.admins = admins
+  }
+}
+
+class AccountingDepartment extends Department {
+  constructor(id: string, private reports: string[]) {
+    super(id, 'Accounting')
+  }
+  addReport(text: string) {
+    this.reports.push(text)
+  }
+  printReport() {
+    console.log(this.reports)
+  }
+}
+
 const accounting = new Department('d1', 'Accounting')
 
 accounting.addemployee('Josh')
@@ -30,3 +49,12 @@ accounting.addemployee('Ben')
 
 accounting.describe()
 accounting.printEmployeeInformation()
+
+const tech = new ITDepartment('it1', ['Josh'])
+tech.describe()
+console.log(tech)
+
+const accounting2 = new AccountingDepartment('d2', [])
+accounting2.addReport('something with a lot of $$$')
+accounting2.describe()
+accounting2.printReport()
