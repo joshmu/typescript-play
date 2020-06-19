@@ -1,14 +1,6 @@
-// configuration
-const username = 'josh'
+console.log('hello!')
 
-console.log(username)
+const add = (...numbers: [number, number, number]) =>
+  numbers.reduce((acc, curr) => acc + curr, 0)
 
-const button = document.querySelector('button')!
-
-function clickHandler(message: string) {
-  console.log('Clicked!', message)
-}
-
-if (button) {
-  button.addEventListener('click', clickHandler.bind(null, 'from josh'))
-}
+console.log(add(2, 3, 7))
