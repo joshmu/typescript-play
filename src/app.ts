@@ -1,7 +1,7 @@
 class Department {
   // private name: string
   // private employees: string[]
-  private employees: string[] = []
+  protected employees: string[] = []
 
   constructor(private readonly id: string, public name: string) {
     // this.name = n
@@ -12,7 +12,7 @@ class Department {
     console.log(`Department (${this.id}): ${this.name}`)
   }
 
-  addemployee(employee: string) {
+  addEmployee(employee: string) {
     this.employees.push(employee)
   }
 
@@ -33,9 +33,18 @@ class AccountingDepartment extends Department {
   constructor(id: string, private reports: string[]) {
     super(id, 'Accounting')
   }
+
+  addEmployee(name: string) {
+    if (name === 'Josh') {
+      return
+    }
+    this.employees.push(name)
+  }
+
   addReport(text: string) {
     this.reports.push(text)
   }
+
   printReport() {
     console.log(this.reports)
   }
@@ -43,8 +52,8 @@ class AccountingDepartment extends Department {
 
 const accounting = new Department('d1', 'Accounting')
 
-accounting.addemployee('Josh')
-accounting.addemployee('Ben')
+accounting.addEmployee('Josh')
+accounting.addEmployee('Ben')
 // accounting.employees[2] = 'Anna' // <- this will not work due to 'private' prop
 
 accounting.describe()
@@ -56,5 +65,8 @@ console.log(tech)
 
 const accounting2 = new AccountingDepartment('d2', [])
 accounting2.addReport('something with a lot of $$$')
+accounting2.addEmployee('Josh')
+accounting2.addEmployee('Jonathan')
 accounting2.describe()
 accounting2.printReport()
+console.log(accounting2)
