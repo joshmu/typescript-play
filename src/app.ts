@@ -1,4 +1,5 @@
 class Department {
+  static fiscalYear: number = 2020
   // private name: string
   // private employees: string[]
   protected employees: string[] = []
@@ -6,6 +7,10 @@ class Department {
   constructor(private readonly id: string, public name: string) {
     // this.name = n
     // this.employees = []
+  }
+
+  static createEmployee(name: string) {
+    return { name }
   }
 
   describe(this: Department) {
@@ -88,3 +93,6 @@ accounting2.printReport()
 console.log(accounting2)
 accounting2.mostRecentReport = 'holy!'
 console.log(accounting2.mostRecentReport)
+
+const employee1 = Department.createEmployee('Josh Mu')
+console.log(employee1, Department.fiscalYear)
