@@ -1,6 +1,17 @@
-console.log('hello!')
+class Department {
+  name: string
 
-const add = (...numbers: [number, number, number]) =>
-  numbers.reduce((acc, curr) => acc + curr, 0)
+  constructor(n: string) {
+    this.name = n
+  }
 
-console.log(add(2, 3, 7))
+  describe(this: Department) {
+    console.log('Department: ' + this.name)
+  }
+}
+
+const accounting = new Department('Accounting')
+accounting.describe()
+
+const accountingCopy = { name: 'poo', describe: accounting.describe }
+accountingCopy.describe()
