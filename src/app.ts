@@ -119,3 +119,17 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({ type: 'horse', runningSpeed: 99 })
+
+// type casting
+// const userInputElement = <HTMLInputElement>document.getElementById('user-input')!
+const userInputElement = document.getElementById(
+  'user-input'
+)! as HTMLInputElement
+
+userInputElement.value = 'Hi there!'
+// or without using '!'
+const input = document.getElementById('user-input')
+
+if (input) {
+  ;(input as HTMLInputElement).value = 'Hello there!'
+}
