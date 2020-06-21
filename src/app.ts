@@ -144,4 +144,21 @@ interface ErrorContainer {
 
 const errorBag: ErrorContainer = {
   email: 'Not a valid email.',
+  username: 'Must start with a capital character!',
 }
+
+// function overloads
+
+function addition(a: number, b: number): number
+function addition(a: string, b: string): string
+function addition(a: Combinable, b: Combinable) {
+  if (typeof a === 'string' || typeof b === 'string') {
+    return a.toString() + b.toString()
+  }
+  return a + b
+}
+
+const result = addition('josh', 'mu')
+// we cannot split because ts believes we could return a number or string however we know this case will always be string returned
+// so we could use type casting but this isn't optimal as we know what it should be (as string)
+console.log(result.split(''))
