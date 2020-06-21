@@ -174,3 +174,14 @@ const fetchedUserData = {
 // if we fetch data maybe we don't have certainty that all these properties are set yet
 // console.log(fetchedUserData.job && fetchedUserData.job.title)
 console.log(fetchedUserData?.job?.title)
+
+// nullish coalescing
+
+const userInput = ''
+// this will check for falsy values...
+const storedData = userInput || 'DEFAULT'
+// however what if an empty string is valid!?
+// this is why we would use nullish coalescing operator
+const correctData = userInput ?? 'DEFAULT'
+console.log({ storedData })
+console.log({ correctData })
