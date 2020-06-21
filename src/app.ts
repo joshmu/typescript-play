@@ -162,3 +162,15 @@ const result = addition('josh', 'mu')
 // we cannot split because ts believes we could return a number or string however we know this case will always be string returned
 // so we could use type casting but this isn't optimal as we know what it should be (as string)
 console.log(result.split(''))
+
+// optional chaining
+
+const fetchedUserData = {
+  id: 'u1',
+  name: 'Josh',
+  // let's say job property shows up later in runtime...
+  job: { title: 'CEO', description: 'My own company' },
+}
+// if we fetch data maybe we don't have certainty that all these properties are set yet
+// console.log(fetchedUserData.job && fetchedUserData.job.title)
+console.log(fetchedUserData?.job?.title)
