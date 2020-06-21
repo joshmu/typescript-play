@@ -133,3 +133,15 @@ const input = document.getElementById('user-input')
 if (input) {
   ;(input as HTMLInputElement).value = 'Hello there!'
 }
+
+// index properties
+// we want this to be flexible
+// { email: 'Not a valid email', username: 'Must start with a character!'}
+interface ErrorContainer {
+  // don't know the name or count but do know that the prop name can be interpreted as a string and so is the value
+  [prop: string]: string
+}
+
+const errorBag: ErrorContainer = {
+  email: 'Not a valid email.',
+}
