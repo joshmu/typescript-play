@@ -1,56 +1,43 @@
-// type vs interface functions
-// type function
-// type AddFn = (a: number, b: number) => number
-// interface function
-interface AddFn {
-  (a: number, b: number): number
-}
-let add: AddFn
-add = (n1: number, n2: number) => {
-  return n1 + n2
+type Admin = {
+  name: string
+  privileges: string[]
 }
 
-// interfaces
-interface Named {
-  readonly name?: string
-  // optional property
-  outputName?: string
+type Employee = {
+  name: string
+  startDate: Date
 }
 
-interface Greetable extends Named {
-  greet(phrase: string): void
+// Intersection type of type objects
+type ElevatedEmployee = Admin & Employee
+
+const e1: ElevatedEmployee = {
+  name: 'Josh',
+  startDate: new Date(),
+  privileges: ['tech'],
 }
 
-interface Age {
-  readonly age: number
+/*
+interface Admin2 {
+  name: string
+  privileges: string[]
 }
 
-class Person implements Greetable, Age {
-  age = 34
-  name?: string
-
-  get getAge() {
-    return this.age
-  }
-
-  constructor(n?: string) {
-    if (n) this.name = n
-  }
-
-  greet(phrase: string) {
-    if (this.name) {
-      console.log(`${this.name}: ${phrase}`)
-    } else {
-      console.log('Hi!')
-    }
-  }
+interface Employee2 {
+  name: string
+  startDate: Date
 }
 
-let user1: Person
+// Intersection type of interfaces works similar
+interface ElevatedEmployee2 extends Admin2, Employee2 {}
 
-user1 = new Person()
+*/
 
-user1.greet('Why hello there!')
+type Combinable = string | number
+type Numeric = number | boolean
 
-console.log(user1.getAge)
-console.log(user1.age)
+// intersection type of union types
+type Universal = Combinable & Numeric
+
+// we get the common types -> 'number'
+const u1: Universal = 999
