@@ -185,3 +185,11 @@ const storedData = userInput || 'DEFAULT'
 const correctData = userInput ?? 'DEFAULT'
 console.log({ storedData })
 console.log({ correctData })
+
+// Generics
+
+function mergeObjects<T, U>(obj1: T, obj2: U) {
+  return Object.assign(obj1, obj2)
+}
+
+console.log(mergeObjects({ name: 'josh' }, { age: 34 }))
