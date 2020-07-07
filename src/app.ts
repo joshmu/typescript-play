@@ -3,12 +3,14 @@
 // they receive arguments
 // decorators are executed when it is defined
 
-function Logger(constructor: Function) {
-  console.log('Logging...')
-  console.log(constructor)
+function Logger(logTxt: string) {
+  return function (constructor: Function) {
+    console.log(logTxt)
+    console.log(constructor)
+  }
 }
 
-@Logger
+@Logger('LOGGING - PERSON')
 class Person {
   // short hand syntax
   name = 'Josh'
