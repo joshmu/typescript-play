@@ -4,6 +4,7 @@
 // decorators are executed when it is defined
 
 function Logger(logTxt: string) {
+  console.log('LOGGER FACTORY')
   return function (constructor: Function) {
     console.log(logTxt)
     console.log(constructor)
@@ -11,7 +12,9 @@ function Logger(logTxt: string) {
 }
 
 function WithTemplate(template: string, hookId: string) {
+  console.log('TEMPLATE FACTORY')
   return function (constructor: any) {
+    console.log('Rendering template')
     const hookEl = document.getElementById(hookId)
     const p = new constructor()
     if (hookEl) {
@@ -21,7 +24,7 @@ function WithTemplate(template: string, hookId: string) {
   }
 }
 
-// @Logger('LOGGING - PERSON')
+@Logger('LOGGING - PERSON')
 @WithTemplate('<h1>My Person Object</h1>', 'app')
 class Person {
   // short hand syntax
